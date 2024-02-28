@@ -33,7 +33,7 @@ function Row({ movies }: RowProps) {
             <MovieCard
               id={movie.id}
               title={movie.title}
-              backdropPath={movie.backdrop_path}
+              backdropPath={movie.backdrop_path!}
             />
           </CarouselItem>
         ))}

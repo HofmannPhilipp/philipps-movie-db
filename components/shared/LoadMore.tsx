@@ -51,7 +51,7 @@ function LoadMore({
     if (inView && page.current < totalPages) {
       fetchMore();
     }
-  }, [inView]);
+  }, [inView, fetchMore, totalPages]);
 
   useEffect(() => {
     setMoreMovies([]);

@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import MovieCard from "./MovieCard";
 import { validateAndFilterMovies } from "@/lib/utils";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 type LoadMoreProps = {
   serverAction: (path: string) => Promise<FetchMovies | undefined>;
@@ -26,32 +26,32 @@ function LoadMore({
   const page = useRef(2);
   const searchParams = useSearchParams();
 
-  async function fetchMore() {
-    let apiPath;
-    if (searchQuery)
-      apiPath = path + "?" + searchQuery + `&page=${page.current}`;
-    else apiPath = path + `?page=${page.current}`;
-
-    const data = await serverAction(apiPath);
-    if (!data) {
-      entry?.target.remove();
-      return;
-    }
-
-    const movies = validateAndFilterMovies(data);
-    if (movies.length === 0) {
-      entry?.target.remove();
-      return;
-    }
-    setMoreMovies([...moreMovies, ...movies]);
-    page.current++;
-  }
-
   useEffect(() => {
     if (inView && page.current < totalPages) {
       fetchMore();
     }
-  }, [inView, fetchMore, totalPages]);
+
+    async function fetchMore() {
+      let apiPath;
+      if (searchQuery)
+        apiPath = path + "?" + searchQuery + `&page=${page.current}`;
+      else apiPath = path + `?page=${page.current}`;
+
+      const data = await serverAction(apiPath);
+      if (!data) {
+        entry?.target.remove();
+        return;
+      }
+
+      const movies = validateAndFilterMovies(data);
+      if (movies.length === 0) {
+        entry?.target.remove();
+        return;
+      }
+      setMoreMovies([...moreMovies, ...movies]);
+      page.current++;
+    }
+  }, [inView, totalPages, path, searchQuery, serverAction]);
 
   useEffect(() => {
     setMoreMovies([]);

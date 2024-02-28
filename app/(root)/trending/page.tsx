@@ -3,6 +3,7 @@ import MovieCard from "@/components/shared/MovieCard";
 import { fetchMovies } from "@/lib/actions/action";
 import { validateAndFilterMovies } from "@/lib/utils";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 async function TrendingPage() {
   const data = await fetchMovies("/trending/movie/week");
@@ -21,11 +22,13 @@ async function TrendingPage() {
             key={movie.id}
           />
         ))}
-        <LoadMore
-          serverAction={fetchMovies}
-          path="/trending/movie/week"
-          totalPages={data.total_pages}
-        />
+        <Suspense>
+          <LoadMore
+            serverAction={fetchMovies}
+            path="/trending/movie/week"
+            totalPages={data.total_pages}
+          />
+        </Suspense>
       </div>
     </section>
   );

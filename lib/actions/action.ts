@@ -21,6 +21,7 @@ const BASE_URL = "https://api.themoviedb.org/3" as const;
 export async function fetchMovies(path: string) {
   try {
     const response = await fetch(`${BASE_URL}${path}`, {
+      next: { revalidate: 3600 },
       ...options,
       method: options.method || "GET",
       headers: {

@@ -3,7 +3,8 @@
 import { genresList } from "@/constants/genreList";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Button } from "../ui/button";
+import { buttonVariants } from "../ui/button";
+import { cn } from "@/lib/utils";
 
 function GenreFilter() {
   const searchParams = useSearchParams();
@@ -20,16 +21,16 @@ function GenreFilter() {
   return (
     <div className="flex overflow-x-auto sm:flex-wrap  gap-4 scrollbar-hide">
       {genresList.map((genre) => (
-        <Button
-          variant={"secondary"}
+        <Link
           key={genre.id}
-          className={selectedGenre === genre.id ? "text-primary" : ""}
-          asChild
+          replace
+          href={href.replace(selectedGenre, genre.id)}
+          className={cn(buttonVariants({ variant: "secondary" }), {
+            "text-primary": selectedGenre === genre.id,
+          })}
         >
-          <Link replace href={href.replace(selectedGenre, genre.id)}>
-            {genre.name}
-          </Link>
-        </Button>
+          {genre.name}
+        </Link>
       ))}
     </div>
   );

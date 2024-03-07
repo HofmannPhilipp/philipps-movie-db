@@ -18,70 +18,70 @@ export const genresList = [
   {
     id: "1",
     name: "All",
-    icon: <Flame />,
+    icon: Flame,
   },
   {
     id: "28",
     name: "Action",
-    icon: <Swords />,
+    icon: Swords,
   },
   {
     id: "12",
     name: "Adventure",
-    icon: <Gem />,
+    icon: Gem,
   },
   {
     id: "16",
     name: "Animation",
-    icon: <Baby />,
+    icon: Baby,
   },
   {
     id: "35",
     name: "Comedy",
-    icon: <Smile />,
+    icon: Smile,
   },
 
   {
     id: "14",
     name: "Fantasy",
-    icon: <Wand />,
+    icon: Wand,
   },
 
   {
     id: "27",
     name: "Horror",
-    icon: <Ghost />,
+    icon: Ghost,
   },
 
   {
     id: "10749",
     name: "Romance",
-    icon: <Heart />,
+    icon: Heart,
   },
   {
     id: "878",
     name: "Science Fiction",
-    icon: <Atom />,
+    icon: Atom,
   },
 
   {
     id: "53",
     name: "Thriller",
-    icon: <Skull />,
+    icon: Skull,
   },
   {
     id: "10752",
     name: "War",
-    icon: <Bomb />,
+    icon: Bomb,
   },
   {
     id: "37",
     name: "Western",
-    icon: <FlameKindling />,
+    icon: FlameKindling,
   },
   {
     id: "18",
     name: "Drama",
-    icon: <Drama />,
+    icon: Drama,
   },
 ];

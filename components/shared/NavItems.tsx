@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { headerLinks } from "@/constants";
-import { Button } from "../ui/button";
+import { buttonVariants } from "../ui/button";
 function NavItems() {
   const pathname = usePathname();
   return (
@@ -16,11 +16,12 @@ function NavItems() {
             key={link.route}
             className={`${isActive && `text-primary`} whitespace-nowrap`}
           >
-            <Button asChild variant={"ghost"}>
-              <Link href={link.route} className=" lg:text-xl">
-                {link.label}
-              </Link>
-            </Button>
+            <Link
+              href={link.route}
+              className={buttonVariants({ variant: "ghost" })}
+            >
+              {link.label}
+            </Link>
           </li>
         );
       })}

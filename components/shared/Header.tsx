@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
 import { ThemeToggle } from "./ThemeToggle";
 import { ArrowLeft, CircleUserRound, SearchIcon } from "lucide-react";
@@ -39,10 +38,6 @@ function Header() {
             <ArrowLeft />
           </Button>
         )}
-
-        {/* <nav className="max-w-md flex">
-          <NavItems />
-        </nav> */}
         <form
           className={` flex-grow max-w-lg ${
             showFullWidthSearch ? `flex ` : `sm:flex hidden`
